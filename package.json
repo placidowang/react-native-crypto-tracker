@@ -12,7 +12,8 @@
   "dependencies": {
     "material-design-icons": "^3.0.1",
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "react-native-material-design": "^0.3.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -26,5 +27,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
   }
 }

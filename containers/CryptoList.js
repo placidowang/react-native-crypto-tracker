@@ -23,10 +23,10 @@ const CryptoList = () => {
 
 const styles = StyleSheet.create({
   list: {
-    backgroundColor: '#dfdfdf'
+    // backgroundColor: '#dfdfdf'
   },
   title: {
-    fontSize: 48
+    fontSize: 24
     
   }
 })

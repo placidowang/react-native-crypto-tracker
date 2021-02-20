@@ -24,23 +24,25 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+// import { Provider as MaterialIconProvider } from 'material-design-icons';
 import Header from './Header.js';
 import CryptoList from './CryptoList.js';
 
 const App: () => React$Node = () => {
   return (
     <>
+    {/* <MaterialIconProvider> */}
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
+        <Header />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
+          {/* {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
-          )}
+          )} */}
           <View style={styles.body}>
             <CryptoList />
 
@@ -74,20 +76,26 @@ const App: () => React$Node = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
+    {/* </MaterialIconProvider> */}
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  safeAreaView: {
+    backgroundColor: '#2b2b2b',
+
+  },
   scrollView: {
-    backgroundColor: Colors.lighter,
+    // backgroundColor: Colors.lighter,
   },
   engine: {
     position: 'absolute',
     right: 0,
   },
   body: {
-    backgroundColor: Colors.white,
+    // backgroundColor: Colors.white,
+    // height: '100px',
   },
   sectionContainer: {
     marginTop: 32,
