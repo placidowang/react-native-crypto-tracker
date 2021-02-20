@@ -17,13 +17,14 @@ import {
 } from 'react-native';
 
 import {
-  Header,
+  // Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Header from './Header.js';
 import CryptoList from './CryptoList.js';
 
 const App: () => React$Node = () => {

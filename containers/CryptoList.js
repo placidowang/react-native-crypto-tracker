@@ -1,18 +1,34 @@
 import React from 'react';
-import { Text } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet
+} from 'react-native';
 
 import CryptoTile from '../components/CryptoTile.js';
 
 const CryptoList = () => {
   return (
     <>
-      <Text>CryptoList</Text>
-      <CryptoTile />
-      <CryptoTile />
-      <CryptoTile />
-      <CryptoTile />
+      <View style={styles.list}>
+        <Text style={styles.title}>CryptoList</Text>
+        <CryptoTile />
+        <CryptoTile />
+        <CryptoTile />
+        <CryptoTile />
+      </View>
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: '#dfdfdf'
+  },
+  title: {
+    fontSize: 48
+    
+  }
+})
 
 export default CryptoList;
