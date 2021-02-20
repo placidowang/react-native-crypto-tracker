@@ -24,6 +24,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import CryptoList from './CryptoList.js';
+
 const App: () => React$Node = () => {
   return (
     <>
@@ -39,14 +41,14 @@ const App: () => React$Node = () => {
             </View>
           )}
           <View style={styles.body}>
-            <View style={styles.sectionContainer}>
+            <CryptoList />
+
+
+            {/* <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
                 screen and then come back to see your edits.
-              </Text>
-              <Text>
-                Test test test test test
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -67,7 +69,7 @@ const App: () => React$Node = () => {
                 Read the docs to discover what to do next:
               </Text>
             </View>
-            <LearnMoreLinks />
+            <LearnMoreLinks /> */}
           </View>
         </ScrollView>
       </SafeAreaView>
