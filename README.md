@@ -1,5 +1,4 @@
-# Coding Challenge - Mobile
-## React Native Crypto Tracker
+# Coding Challenge - React Native Crypto Tracker
 
 ### How to start
 Have Android Virtual Device or Android Device running. Then run:
