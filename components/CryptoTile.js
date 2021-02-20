@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
+  View,
   Text,
-  View
+  Image,
 } from 'react-native';
-// import { Button, Card } from 'react-native-material-design';
 
 const CryptoList = () => {
   return (
     <View>
       <Text>CryptoTile</Text>
-      {/* < Button /> */}
+      <Image 
+        style={{width: 20, height: 20, tintColor: '#00ff00'}}
+        source={require('../assets/icons/baseline_north_east_black_24dp.png')}/>
     </View>
   )
 }

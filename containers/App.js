@@ -24,14 +24,19 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
 // import { Provider as MaterialIconProvider } from 'material-design-icons';
 import Header from './Header.js';
 import CryptoList from './CryptoList.js';
 
+const theme = {
+  ...DefaultTheme,
+}
+
 const App: () => React$Node = () => {
   return (
-    <>
-    {/* <MaterialIconProvider> */}
+    <PaperProvider theme={theme}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <Header />
@@ -76,8 +81,7 @@ const App: () => React$Node = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    {/* </MaterialIconProvider> */}
-    </>
+    </PaperProvider>
   );
 };
 

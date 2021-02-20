@@ -8,27 +8,32 @@ import {
 
 const Header = () => {
   return (
-    <View style={styles.header}>
+    <View style={styles.container}>
         <Image
-          style={styles.icon}
-          source={require('../assets/icons/insights-24px.svg')}/>
+          style={styles.logo}
+          source={require('../assets/icons/baseline_insights_black_24dp.png')}/>
         <Text style={styles.title}>Crypto Tracker</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#000000'
+  container: {
+    // flex: 1,
+    backgroundColor: '#000000',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
   },
-  icon: {
-    width: 64,
-    height: 64,
-    color: '#ffffff'
+  logo: {
+    width: 48,
+    height: 48,
+    backgroundColor: '#ffffff',
   },
   title: {
     fontSize: 24,
-    fontWeight: '600'
+    fontWeight: '600',
+    color: '#ffffff',
   }
 })
 

@@ -13,7 +13,8 @@
     "material-design-icons": "^3.0.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-material-design": "^0.3.7"
+    "react-native-material-design": "^0.3.7",
+    "react-native-paper": "^4.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

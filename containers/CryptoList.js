@@ -9,24 +9,25 @@ import CryptoTile from '../components/CryptoTile.js';
 
 const CryptoList = () => {
   return (
-    <>
-      <View style={styles.list}>
-        <Text style={styles.title}>CryptoList</Text>
-        <CryptoTile />
-        <CryptoTile />
-        <CryptoTile />
-        <CryptoTile />
-      </View>
-    </>
+    <View style={styles.container}>
+      <Text style={styles.title}>CryptoList</Text>
+      <CryptoTile />
+      <CryptoTile />
+      <CryptoTile />
+      <CryptoTile />
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  list: {
+  container: {
     // backgroundColor: '#dfdfdf'
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 24
+    fontSize: 24,
     
   }
 })
