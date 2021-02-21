@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CryptoList from './CryptoList.js';
 import {
   View,
@@ -6,12 +7,17 @@ import {
   TouchableOpacity,
   Image,
   Text,
+  Button,
   StyleSheet,
 } from 'react-native';
 
-const Portfolio = ({setIsAddingCrypto}) => {
+const Portfolio = (props) => {
   const handlePress = () => {
-    setIsAddingCrypto(true);
+    props.setIsAddingCrypto(true);
+  };
+
+  const handleRefresh = () => {
+    props.refresh();
   };
 
   return(
@@ -25,6 +31,9 @@ const Portfolio = ({setIsAddingCrypto}) => {
           <Text>Add Cryptocurrency</Text>
         </TouchableOpacity>
       </ScrollView>
+      <Button 
+        title='refresh'
+        onPress={handleRefresh} />
     </View>
   );
 };
@@ -43,4 +52,10 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Portfolio;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    refresh: () => dispatch({type: 'refresh'}),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Portfolio);

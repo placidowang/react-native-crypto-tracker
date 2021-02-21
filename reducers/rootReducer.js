@@ -21,6 +21,9 @@ const rootReducer = (state = initialState, action) => {
         (c) => c !== action.symbol,
       );
       return {...state, portfolio: newPortfolio};
+    case 'refresh':
+      const newState = {...state};
+      return newState;
     default:
       return state;
   }
