@@ -12,7 +12,7 @@ import {
 const AddCryptoScreen = (props) => {
   const [value, onChangeText] = useState('');
 
-  const handlePress = () => {
+  const handleAdd = () => {
     const symbol = value.toUpperCase();
     if (props.portfolio.includes(symbol)) {
       Alert.alert(`You already have ${symbol}!`)
@@ -21,6 +21,10 @@ const AddCryptoScreen = (props) => {
       props.setIsAddingCrypto(false);
     }
   };
+
+  const handleCancel = () => {
+    props.setIsAddingCrypto(false);
+  }
 
   return(
     <View style={styles.container}>
@@ -33,8 +37,13 @@ const AddCryptoScreen = (props) => {
       />
       <View style={styles.addBtn}>
         <Button 
-          title='Add!'
-          onPress={handlePress}
+          title='   Add   '
+          onPress={handleAdd}
+        />
+        <Button 
+          title='cancel'
+          color='darkgray'
+          onPress={handleCancel}
         />
       </View>
     </View>
