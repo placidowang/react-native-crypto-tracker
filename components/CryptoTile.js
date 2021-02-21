@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -9,30 +9,34 @@ import {
 
 
 const CryptoTile = ({symbol}) => {
-  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState({name: 'moneymoney'});
 
-  fetch(`https://data.messari.io/api/v1/assets/${symbol}/metrics`)
-    .then(r => r.json())
-    .then(data => {
-      setData(data.data);
-    }, [])
+  useEffect(() => {
+    fetch(`https://data.messari.io/api/v1/assets/${symbol}/metrics`)
+      .then(r => r.json())
+      .then(d => {
+        setIsLoading(false);
+        setData(d.data);
+      })
+  }, []);
 
   return (
-    <View style={styles.container}>
-    {data ?
-      <View>
-          <Text>{data.name}</Text>
+    <>
+      {isLoading ?
+        <View style={styles.container}>
+          <Text>Searching for {symbol}...</Text>
+        </View>
+        :
+        <View style={styles.container}>
+          <Text style={styles.name}>{data.name}</Text>
           <Text style={styles.symbol}>{symbol}</Text>
           <Image 
             style={{width: 20, height: 20, tintColor: 'green'}}
             source={require('../assets/icons/baseline_north_east_black_24dp.png')}/>
-        </View> :
-        <View>
-          <Text>Couldn't find {symbol}!</Text>
         </View>
-        }
-        </View>
-    
+      }
+    </>
   )
 }
 
@@ -43,9 +47,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0,0,0,0.2)',
   },
-  symbol: {
-    fontSize: 24,
+  name: {
+    fontSize:24,
     fontWeight: 'bold'
+  },
+  symbol: {
+    fontSize: 16,
+    color: 'rgba(0,0,0,0.5)',
+    // fontWeight: 'bold'
   }
 })
 
