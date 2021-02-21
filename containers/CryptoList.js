@@ -11,8 +11,8 @@ import CryptoTile from '../components/CryptoTile.js';
 const CryptoList = (props) => {
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.title}>CryptoList</Text> */}
-      <Text>Portfolio: {props.portfolio}</Text>
+      {/* <Text style={styles.title}>Portfolio</Text> */}
+      {/* <Text>Portfolio: {props.portfolio}</Text> */}
       
       {
         props.portfolio.map(symbol => <CryptoTile symbol={symbol} />)
@@ -25,14 +25,15 @@ const styles = StyleSheet.create({
   container: {
     // backgroundColor: '#dfdfdf'
     flex: 1,
+    alignItems: 'stretch',
+
     borderWidth: 1,
     padding: 20,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    fontSize: 24,
-    
+    fontSize: 18,
   }
 })
 
