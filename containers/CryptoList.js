@@ -15,8 +15,7 @@ const CryptoList = (props) => {
       {props.portfolio.map((symbol) => {
         i++;
         return <CryptoTile symbol={symbol} key={i}/>
-      }
-      )}
+      })}
     </View>
   );
 };
@@ -35,6 +34,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   const { portfolio } = state;
   return { portfolio }
-}
+};
 
 export default connect(mapStateToProps)(CryptoList);
