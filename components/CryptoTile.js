@@ -11,11 +11,16 @@ import {
 
 const CryptoTile = (props) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState({name: `Couldn't find ${props.symbol}!`, market_data: {price_usd: 0.0, percent_change_usd_last_24_hours: 0.0}});
+  const [data, setData] = useState({
+    id: 0,
+    name: `Couldn't find ${props.symbol}!`,
+    market_data: {price_usd: 0.0, percent_change_usd_last_24_hours: 0.0},
+  });
 
   useEffect(() => {
     fetch(`https://data.messari.io/api/v1/assets/${props.symbol}/metrics`, {
-      // headers: { "x-messari-api-key": "MY SECRET KEY"}
+      /* Uncomment below to use your API Key */
+      // headers: { "x-messari-api-key": "MY_SECRET_KEY"}
     })
       .then(r => r.json())
       .then(d => {
@@ -58,27 +63,37 @@ const CryptoTile = (props) => {
   }
 
   return(<>
-      {isLoading ?
-        <View style={styles.container}>
-          <Text>Searching for {props.symbol}...</Text>
+    {isLoading ?
+      <View style={styles.container}>
+        <Text>Searching for {props.symbol}...</Text>
+      </View>
+      :
+      <View style={styles.container}>
+        <Image
+          style={styles.cryptoIcon}
+          source={{
+            uri:
+              `https://messari.io/asset-images/${data.id}/128.png?v=2`,
+          }}
+        />
+        <View style={styles.left}>
+          <Text style={styles.name}>{data.name}</Text>
+          {/* <View style={{flexDirection: 'row', alignItems: 'center' }}> */}
+          <Text style={styles.symbol}>{props.symbol}</Text>
+
+          {/* </View> */}
         </View>
-        :
-        <View style={styles.container}>
-          <View style={styles.left}>
-            <Text style={styles.name}>{data.name}</Text>
-            <Text style={styles.symbol}>{props.symbol}</Text>
-          </View>
-          <View style={styles.right}>
-            <Text style={styles.priceUsd}>${data.market_data.price_usd.toPrecision(8)}</Text>
-            <View style={{flexDirection: 'row'}}>{changeInValue()}</View>
-          </View>
-          <TouchableOpacity onPress={handlePress}>
-            <Image 
-              style={styles.removeIcon}
-              source={require('../assets/icons/baseline_remove_circle_outline_black_24dp.png')}/>
-          </TouchableOpacity>
+        <View style={styles.right}>
+          <Text style={styles.priceUsd}>${data.market_data.price_usd.toPrecision(8)}</Text>
+          <View style={{flexDirection: 'row'}}>{changeInValue()}</View>
         </View>
-      }
+        <TouchableOpacity onPress={handlePress}>
+          <Image 
+            style={styles.removeIcon}
+            source={require('../assets/icons/baseline_remove_circle_outline_black_24dp.png')}/>
+        </TouchableOpacity>
+      </View>
+    }
   </>)
 }
 
@@ -88,12 +103,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 8,
+    paddingTop: 18,
+    paddingBottom: 18,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0,0,0,0.2)',
   },
   left: {
     alignItems: 'flex-start',
+    position: 'absolute',
+    left: 44,
   },
   right: {
     alignItems: 'flex-end',
@@ -107,7 +125,10 @@ const styles = StyleSheet.create({
   symbol: {
     fontSize: 18,
     color: 'rgba(0,0,0,0.5)',
-    // fontWeight: 'bold'
+  },
+  cryptoIcon: {
+    width: 36,
+    height: 36,
   },
   priceUsd: {
     fontSize: 18,

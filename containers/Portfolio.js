@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Image,
   Text,
-  Button,
   StyleSheet,
 } from 'react-native';
 
@@ -31,9 +30,14 @@ const Portfolio = (props) => {
           <Text>Add Cryptocurrency</Text>
         </TouchableOpacity>
       </ScrollView>
-      <Button 
-        title='refresh'
-        onPress={handleRefresh} />
+      {/* <View style={{height: 60, flex: 1}}> */}
+        <TouchableOpacity 
+          // title='refresh'
+          style={styles.refreshBtn}
+          onPress={handleRefresh}>
+          <Text style={styles.refreshBtnTxt}>Refresh</Text>
+        </TouchableOpacity>
+      {/* </View> */}
     </View>
   );
 };
@@ -49,6 +53,16 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     tintColor: 'rgba(0,0,0,0.3)',
+  },
+  refreshBtn: {
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#257985',
+  },
+  refreshBtnTxt: {
+    fontSize: 20,
+    color: '#ffffff',
   },
 });
 
