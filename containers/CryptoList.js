@@ -8,12 +8,16 @@ import {
 
 import CryptoTile from '../components/CryptoTile.js';
 
+let i = 0;
+
 const CryptoList = (props) => {
   return (
     <View style={styles.container}>
-      {props.portfolio.map((symbol) => (
-        <CryptoTile symbol={symbol} />
-      ))}
+      {props.portfolio.map((symbol) => {
+        i++;
+        return <CryptoTile symbol={symbol} key={i}/>
+      }
+      )}
     </View>
   );
 };

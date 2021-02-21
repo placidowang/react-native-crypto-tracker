@@ -19,8 +19,8 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: '#000000',
+    // backgroundColor: '#000000',
+    backgroundColor: '#5EA8A7',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 48,
     height: 48,
-    backgroundColor: '#ffffff',
+    tintColor: 'white',
   },
   title: {
     fontSize: 24,

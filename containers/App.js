@@ -35,22 +35,12 @@ const App: () => React$Node = () => {
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
-          <Header />
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-            {/* {global.HermesInternal == null ? null : (
-              <View style={styles.engine}>
-                <Text style={styles.footer}>Engine: Hermes</Text>
-              </View>
-            )} */}
-            <View style={styles.body}>
-              <CryptoList />
-            </View>
+        <Header />
+        <View style={{flex: 1, height: 'auto'}}>
+          <ScrollView>
+            <CryptoList />
           </ScrollView>
-        </SafeAreaView>
+        </View>
       </PaperProvider>
     </Provider>
   );
