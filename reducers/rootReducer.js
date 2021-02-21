@@ -5,11 +5,6 @@ const initialState = {
     'BTC',
     'ETH',
     'DOGE',
-    'EOS',
-    'XTZ',
-    'DOGE',
-    'EOS',
-    'XTZ',
     'BUNG',
   ]
 }
