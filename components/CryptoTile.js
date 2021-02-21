@@ -4,13 +4,10 @@ import {
   View,
   Text,
   Image,
-  Button,
   TouchableOpacity,
   Alert,
   StyleSheet,
 } from 'react-native';
-
-
 
 const CryptoTile = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +28,7 @@ const CryptoTile = (props) => {
   const handlePress = () => {
     props.removeCrypto(props.symbol);
     Alert.alert(props.symbol + ' removed');
-  }
+  };
 
   const changeInValue = () => {
     if (data.market_data.percent_change_usd_last_24_hours > 0) {
@@ -73,14 +70,11 @@ const CryptoTile = (props) => {
             <Text style={styles.priceUsd}>${data.market_data.price_usd.toPrecision(8)}</Text>
             <View style={{flexDirection: 'row'}}>{changeInValue()}</View>
           </View>
-          {/* <Button title=' x ' onPress={handlePress}/> */}
-            <TouchableOpacity onPress={handlePress}>
-              <Image 
-                style={styles.removeIcon}
-                source={require('../assets/icons/baseline_remove_circle_outline_black_24dp.png')}
-                />
-              {/* <Text style={styles.removeCryptoText}>Remove</Text> */}
-            </TouchableOpacity>
+          <TouchableOpacity onPress={handlePress}>
+            <Image 
+              style={styles.removeIcon}
+              source={require('../assets/icons/baseline_remove_circle_outline_black_24dp.png')}/>
+          </TouchableOpacity>
         </View>
       }
   </>)
@@ -97,7 +91,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'rgba(0,0,0,0.2)',
   },
   left: {
-
+    alignItems: 'flex-start',
   },
   right: {
     alignItems: 'flex-end',

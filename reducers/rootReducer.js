@@ -10,18 +10,19 @@ const initialState = {
     'DOGE',
     'EOS',
     'XTZ',
-    // 'BUNG',
+    'BUNG',
   ]
 }
 
 const rootReducer = (state = initialState, action) => {
+  let newPortfolio;
   switch (action.type) {
     case 'addCrypto':
-      return {...state
-      
-      }
+      newPortfolio = [...state.portfolio];
+      newPortfolio.push(action.symbol);
+      return {...state, portfolio: newPortfolio}
     case 'removeCrypto':
-      const newPortfolio = [...state.portfolio].filter(
+      newPortfolio = [...state.portfolio].filter(
         (c) => c !== action.symbol,
       );
       return {...state, portfolio: newPortfolio};

@@ -1,29 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
+import { StyleSheet } from 'react-native';
 import rootReducer from '../reducers/rootReducer.js';
-
-import {
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
-// import { Provider as MaterialIconProvider } from 'material-design-icons';
-import Header from './Header.js';
-import CryptoList from './CryptoList.js';
+import Header from '../components/Header.js';
+import Portfolio from './Portfolio.js';
+import AddingCryptoScreen from './AddCryptoScreen.js';
 
 const store = createStore(rootReducer);
 
@@ -32,15 +16,16 @@ const theme = {
 };
 
 const App: () => React$Node = () => {
+  const [isAddingCrypto, setIsAddingCrypto] = useState(false);
+
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <Header />
-        <View style={{flex: 1, height: 'auto'}}>
-          <ScrollView>
-            <CryptoList />
-          </ScrollView>
-        </View>
+        {isAddingCrypto ? 
+          <AddingCryptoScreen setIsAddingCrypto={setIsAddingCrypto} />
+          : 
+          <Portfolio setIsAddingCrypto={setIsAddingCrypto} />}
       </PaperProvider>
     </Provider>
   );
@@ -69,19 +54,19 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
-    color: Colors.black,
+    // color: Colors.black,
   },
   sectionDescription: {
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
-    color: Colors.dark,
+    // color: Colors.dark,
   },
   highlight: {
     fontWeight: '700',
   },
   footer: {
-    color: Colors.dark,
+    // color: Colors.dark,
     fontSize: 12,
     fontWeight: '600',
     padding: 4,
