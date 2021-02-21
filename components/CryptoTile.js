@@ -14,7 +14,9 @@ const CryptoTile = (props) => {
   const [data, setData] = useState({name: `Couldn't find ${props.symbol}!`, market_data: {price_usd: 0.0, percent_change_usd_last_24_hours: 0.0}});
 
   useEffect(() => {
-    fetch(`https://data.messari.io/api/v1/assets/${props.symbol}/metrics`)
+    fetch(`https://data.messari.io/api/v1/assets/${props.symbol}/metrics`, {
+      // headers: { "x-messari-api-key": "MY SECRET KEY"}
+    })
       .then(r => r.json())
       .then(d => {
         setIsLoading(false);

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import CryptoList from './CryptoList.js';
 import {
   View,
@@ -16,8 +15,9 @@ const Portfolio = (props) => {
     props.setIsAddingCrypto(true);
   };
 
-  const handleRefresh = () => {
-    props.refresh();
+  const handleRefresh = async () => {
+    await props.setIsAddingCrypto(true);
+    props.setIsAddingCrypto(false);
   };
 
   return(
@@ -49,13 +49,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     tintColor: 'rgba(0,0,0,0.3)',
-  }
-})
+  },
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    refresh: () => dispatch({type: 'refresh'}),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Portfolio);
+export default Portfolio;

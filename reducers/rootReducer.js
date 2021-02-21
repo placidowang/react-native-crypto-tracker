@@ -5,7 +5,6 @@ const initialState = {
     'BTC',
     'ETH',
     'DOGE',
-    'BUNG',
   ]
 }
 
