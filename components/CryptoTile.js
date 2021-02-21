@@ -31,6 +31,8 @@ const CryptoTile = ({symbol}) => {
         <View style={styles.container}>
           <Text style={styles.name}>{data.name}</Text>
           <Text style={styles.symbol}>{symbol}</Text>
+          <Text style={styles.priceUsd}>${data.market_data.price_usd}</Text>
+          <Text>{data.market_data.percent_change_usd_last_24_hours.toFixed(2)}%</Text>
           <Image 
             style={{width: 20, height: 20, tintColor: 'green'}}
             source={require('../assets/icons/baseline_north_east_black_24dp.png')}/>
@@ -44,6 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // width: 100,
+    padding: 8,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0,0,0,0.2)',
   },
@@ -52,9 +55,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   symbol: {
-    fontSize: 16,
+    fontSize: 20,
     color: 'rgba(0,0,0,0.5)',
     // fontWeight: 'bold'
+  },
+  priceUsd: {
+    fontSize: 20,
   }
 })
 
