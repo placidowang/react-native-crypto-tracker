@@ -2,6 +2,7 @@ const initialState = {
   portfolio: [
     'BTC',
     'ETH',
+    'DOGE',
   ]
 }
 

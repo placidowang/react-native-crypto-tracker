@@ -25,9 +25,9 @@ const styles = StyleSheet.create({
   container: {
     // backgroundColor: '#dfdfdf'
     flex: 1,
-    alignItems: 'stretch',
-
-    borderWidth: 1,
+    // alignItems: 'stretch',
+    // alignContent: 'space-between',
+    // borderWidth: 1,
     padding: 20,
     // alignItems: 'center',
     justifyContent: 'center',
