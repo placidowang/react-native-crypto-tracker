@@ -20,12 +20,12 @@ const CryptoTile = (props) => {
   useEffect(() => {
     fetch(`https://data.messari.io/api/v1/assets/${props.symbol}/metrics`, {
       /* Uncomment below to use your API Key */
-      // headers: { "x-messari-api-key": "MY_SECRET_KEY"}
+      headers: { "x-messari-api-key": "MY_SECRET_KEY"}
     })
       .then(r => r.json())
       .then(d => {
         setIsLoading(false);
-        // makes sure you are under messari.io's rate limit
+        // makes sure you are under messari.io's rate limit and symbol is legit
         if (!d.status.error_message) {
           setData(d.data);
         }
