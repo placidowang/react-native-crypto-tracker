@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   Text,
   View,
@@ -7,14 +8,15 @@ import {
 
 import CryptoTile from '../components/CryptoTile.js';
 
-const CryptoList = () => {
+const CryptoList = (props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>CryptoList</Text>
-      <CryptoTile />
-      <CryptoTile />
-      <CryptoTile />
-      <CryptoTile />
+      {/* <Text style={styles.title}>CryptoList</Text> */}
+      <Text>Portfolio: {props.portfolio}</Text>
+      
+      {
+        props.portfolio.map(symbol => <CryptoTile symbol={symbol} />)
+      }
     </View>
   )
 }
@@ -22,6 +24,8 @@ const CryptoList = () => {
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: '#dfdfdf'
+    flex: 1,
+    borderWidth: 1,
     padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -32,4 +36,9 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CryptoList;
+const mapStateToProps = (state) => {
+  const { portfolio } = state;
+  return { portfolio }
+}
+
+export default connect(mapStateToProps)(CryptoList);
