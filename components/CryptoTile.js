@@ -21,6 +21,37 @@ const CryptoTile = ({symbol}) => {
       })
   }, []);
 
+  const changeInValue = () => {
+    if (data.market_data.percent_change_usd_last_24_hours > 0) {
+      return(
+        <View style={{flexDirection: 'row'}}>
+          <Image
+            style={{width: 20, height: 20, tintColor: 'green'}}
+            source={require('../assets/icons/baseline_north_east_black_24dp.png')}/>
+          <Text style={{color: 'green'}}>{data.market_data.percent_change_usd_last_24_hours.toFixed(2)}%</Text>
+        </View>
+      )
+    } else if (data.market_data.percent_change_usd_last_24_hours < 0) {
+      return(
+        <View style={{flexDirection: 'row'}}>
+          <Image 
+            style={{width: 20, height: 20, tintColor: 'red'}}
+            source={require('../assets/icons/baseline_south_east_black_24dp.png')}/>
+          <Text style={{color: 'red'}}>{Math.abs(data.market_data.percent_change_usd_last_24_hours).toFixed(2)}%</Text>
+        </View>
+      )
+    } else {
+      return(
+        <View style={{flexDirection: 'row'}}>
+          <Image
+            style={{width: 20, height: 20, tintColor: 'grey'}}
+            source={require('../assets/icons/baseline_horizontal_rule_black_24dp.png')}/>
+          <Text style={{color: 'gray'}}>{data.market_data.percent_change_usd_last_24_hours.toFixed(2)}%</Text>
+        </View>
+      )
+    }
+  }
+
   return (
     <>
       {isLoading ?
@@ -36,12 +67,7 @@ const CryptoTile = ({symbol}) => {
           </View>
           <View style={styles.right}>
             <Text style={styles.priceUsd}>${data.market_data.price_usd.toPrecision(8)}</Text>
-            <View style={styles.change}>
-              <Text>{data.market_data.percent_change_usd_last_24_hours.toFixed(2)}%</Text>
-              <Image 
-                style={{width: 20, height: 20, tintColor: 'green'}}
-                source={require('../assets/icons/baseline_north_east_black_24dp.png')}/>
-            </View>
+            {changeInValue()}
           </View>
         </View>
       }
@@ -76,7 +102,17 @@ const styles = StyleSheet.create({
   },
   priceUsd: {
     fontSize: 20,
-  }
+  },
+  changePos: {
+    flexDirection: 'row',
+    color: 'green',
+  },
+  changeNeg: {
+    flexDirection: 'row',
+  },
+  changeNon: {
+    flexDirection: 'row',
+  },
 })
 
 export default CryptoTile;

@@ -14,8 +14,8 @@ const Header = () => {
           source={require('../assets/icons/baseline_insights_black_24dp.png')}/>
         <Text style={styles.title}>Crypto Tracker</Text>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     color: '#ffffff',
-  }
-})
+  },
+});
 
 export default Header;
